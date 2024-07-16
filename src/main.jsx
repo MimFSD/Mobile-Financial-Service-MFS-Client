@@ -1,19 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-// import App from './App.jsx'
 import './index.css'
 import { RouterProvider } from 'react-router-dom'
-import Router from './Router/Router'
+import router from './routes/Routes.jsx'
+import { AuthContextProvider } from './Context/AuthContext.jsx'
+import { Toaster } from 'react-hot-toast'
+
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-
-    <div className='max-w-screen-xl mx-auto open-sans-font'>
-
-      <RouterProvider router={Router} />
-
-    </div>
-    
+    <AuthContextProvider>
+      <Toaster
+        reverseOrder={true}
+      />
+      <RouterProvider router={router}></RouterProvider>
+    </AuthContextProvider>
   </React.StrictMode>,
 )
